@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <title>Encrypted Vault</title>
+</head>
+
+<body>
+
+<div class="vault">
+
+  <button id="settingsBtn" class="iconButton" aria-label="Settings">⚙️</button>
+
+  <div id="settingsPanel" class="settingsPanel hidden">
+    <strong>Appearance</strong>
+
+    <label class="themeOption">
+      <input type="radio" name="theme" value="dark">
+      Dark
+    </label>
+
+    <label class="themeOption">
+      <input type="radio" name="theme" value="light">
+      Light
+    </label>
+  </div>
+
+
+  <!-- FIREBASE LOGIN -->
+  <section id="connectScreen" class="hidden">
+
+    <div class="bigIcon">🔐</div>
+    <h1>Connect Vault</h1>
+
+    <div class="passwordArea">
+
+      <label>Email</label>
+      <input id="firebaseEmail"
+             type="email"
+             autocomplete="username"
+             placeholder="Firebase account email">
+
+      <label>Password</label>
+      <input id="firebasePassword"
+             type="password"
+             autocomplete="current-password"
+             placeholder="Firebase account password">
+
+    </div>
+
+    <button class="primaryButton" onclick="connectVault()">
+      Connect
+    </button>
+
+    <p id="connectMessage" class="message"></p>
+
+  </section>
+
+
+  <!-- FIRST-TIME VAULT SETUP -->
+  <section id="setupScreen" class="hidden">
+
+    <div class="bigIcon">🔐</div>
+    <h1>Encrypted Vault</h1>
+
+    <div id="setupItems"></div>
+
+    <button class="secondaryButton" onclick="addSetupItem()">
+      ＋ Add another item
+    </button>
+
+    <div class="passwordArea">
+
+      <label>Vault Password</label>
+      <input id="setupPassword"
+             type="password"
+             placeholder="Choose a strong password">
+
+      <label>Confirm Vault Password</label>
+      <input id="confirmPassword"
+             type="password"
+             placeholder="Enter it again">
+
+    </div>
+
+    <button class="primaryButton" onclick="createVault()">
+      🔒 Create Vault
+    </button>
+
+    <p id="setupMessage" class="message"></p>
+
+  </section>
+
+
+  <!-- LOCKED VAULT -->
+  <section id="lockedScreen" class="hidden">
+
+    <div class="bigIcon">🔒</div>
+    <h1>Encrypted Vault</h1>
+
+    <div class="passwordArea">
+
+      <label>Vault Password</label>
+
+      <input id="unlockPassword"
+             type="password"
+             placeholder="Enter your password"
+             onkeydown="unlockOnEnter(event)">
+
+    </div>
+
+    <button class="primaryButton" onclick="unlockVault()">
+      Unlock Vault
+    </button>
+
+    <p id="unlockMessage" class="message"></p>
+
+  </section>
+
+
+  <!-- UNLOCKED VAULT -->
+  <section id="vaultScreen" class="hidden">
+
+    <div class="bigIcon">🔓</div>
+    <h1>Encrypted Vault</h1>
+
+    <div id="vaultItems"></div>
+
+    <button class="secondaryButton" onclick="addVaultItem()">
+      ＋ Add another item
+    </button>
+
+    <button class="saveButton" onclick="saveVault()">
+      Save Changes
+    </button>
+
+    <button class="lockButton" onclick="lockVault()">
+      🔒 Lock Vault
+    </button>
+
+    <p id="vaultMessage" class="message"></p>
+
+  </section>
+
+</div>
+
+<script type="module" src="./script.js"></script>
+
+</body>
+</html>
